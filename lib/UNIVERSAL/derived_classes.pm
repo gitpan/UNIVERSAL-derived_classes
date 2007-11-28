@@ -3,7 +3,7 @@ package UNIVERSAL::derived_classes;
 use strict;
 use vars qw( $VERSION );
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 sub UNIVERSAL::derived_classes {
     my ($super_class, $reversed) = @_;
@@ -42,6 +42,8 @@ sub UNIVERSAL::derived_classes {
 
     my $root_class = q{};
     $find_derived_classes->($root_class);
+
+    undef $find_derived_classes;
 
     @derived_classes = sort {   $a->isa($b) ?  1
                               : $b->isa($a) ? -1
